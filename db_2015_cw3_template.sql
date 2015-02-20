@@ -13,7 +13,11 @@ ORDER BY popularity DESC, names
 ;
 
 -- Q2 returns (name,forties,fifties,sixties)
-
+SELECT mother, SUBSTRING(TO_CHAR(dob, 'YYYY-MM-DD') for 4) AS year
+FROM person
+WHERE mother IS NOT NULL
+GROUP BY mother, dob
+HAVING COUNT(name) > 1
 ;
 
 -- Q3 returns (name,age)
